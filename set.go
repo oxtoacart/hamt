@@ -15,7 +15,7 @@ func NewSet[T Entry[T]]() Set[T] {
 func (s Set[T]) Insert(e T) Set[T] {
 	size := s.size
 
-	if s.find(e) == nil {
+	if s.Find(e) == nil {
 		size++
 	}
 
@@ -34,13 +34,15 @@ func (s Set[T]) Delete(e T) Set[T] {
 	return Set[T]{size, n.(hamt[T])}
 }
 
-func (s Set[T]) find(e T) *T {
+// Find finds a value corresponding a given value in a set.
+// It returns nil if no value is found.
+func (s Set[T]) Find(e T) *T {
 	return s.hamt.Find(e)
 }
 
 // Include returns true if a given entry is included in a set, or false otherwise.
 func (s Set[T]) Include(e T) bool {
-	return s.find(e) != nil
+	return s.Find(e) != nil
 }
 
 // FirstRest returns a pointer to a value in a set and a rest of the set.

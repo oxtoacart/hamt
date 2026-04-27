@@ -25,7 +25,7 @@ func (m Map[K, V]) Delete(k K) Map[K, V] {
 // It returns nil if no value is found.
 func (m Map[K, V]) Find(k K) *V {
 	var zero V
-	e := m.set.find(newKeyValue(k, zero))
+	e := m.set.Find(newKeyValue(k, zero))
 
 	if e == nil {
 		return nil
